@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TrafficPredictionService } from '../../services/traffic-prediction.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { timeout } from 'rxjs';
+import { traffic } from '../../models/traffic';
 
 @Component({
   selector: 'app-traffic-prediction-form',
@@ -14,7 +16,7 @@ export class TrafficPredictionFormComponent {
   date!: string;
   areaName!: string;
   roadName!: string;
-  prediction: any;
+  prediction!: string;
 
   constructor(private trafficPredictionService: TrafficPredictionService) {}
 
@@ -30,7 +32,17 @@ export class TrafficPredictionFormComponent {
     //   }, error => {
     //     console.error('Error fetching prediction:', error);
     //   });
+    var traffic: traffic = {
+      date: this.date,
+      areaName: this.areaName,
+      roadName: this.roadName
+    };
+    this.trafficPredictionService.predictCongestion(traffic).subscribe(result=> {
+      this.prediction = result;
+      console.log(this.prediction);
+    });
 
-    //this.trafficPredictionService.predictCongestion(this.date, this.areaName, this.roadName).subscribe(result=>);
+    console.log("Message",this.prediction);
+
   }
 }

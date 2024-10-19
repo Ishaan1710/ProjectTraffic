@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { traffic } from '../models/traffic';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ export class TrafficPredictionService {
 
   constructor(private http: HttpClient) {}
 
-  predictCongestion(date: string, areaName: string, roadName: string): Observable<any> {
-    const requestBody = { date, areaName, roadName };
-    return this.http.post<any>(this.apiUrl, requestBody);
+  predictCongestion(traffic: traffic): Observable<any> {
+    return this.http.post<string>(this.apiUrl, traffic);
   }
 }
