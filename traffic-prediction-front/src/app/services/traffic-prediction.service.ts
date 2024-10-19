@@ -11,7 +11,8 @@ export class TrafficPredictionService {
 
   constructor(private http: HttpClient) {}
 
-  predictCongestion(traffic: traffic): Observable<any> {
-    return this.http.post<string>(this.apiUrl, traffic);
+  predictCongestion(traffic: traffic): Observable<string> {
+    var response = this.http.post<string>(this.apiUrl, traffic);
+    return response;//this.http.post<string>(this.apiUrl, traffic);
   }
 }

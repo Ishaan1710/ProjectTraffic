@@ -37,12 +37,12 @@ export class TrafficPredictionFormComponent {
       areaName: this.areaName,
       roadName: this.roadName
     };
-    this.trafficPredictionService.predictCongestion(traffic).subscribe(result=> {
+    this.trafficPredictionService.predictCongestion(traffic).subscribe(result => {
       this.prediction = result;
-      console.log(this.prediction);
+      console.log("Service msg: ",result);
     });
 
-    console.log("Message",this.prediction);
+    console.log("Outside msg: ",this.prediction);
 
   }
 }
