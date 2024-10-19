@@ -16,7 +16,7 @@ export class TrafficPredictionFormComponent {
   date!: string;
   areaName!: string;
   roadName!: string;
-  prediction!: string;
+  prediction!: number;
 
   constructor(private trafficPredictionService: TrafficPredictionService) {}
 

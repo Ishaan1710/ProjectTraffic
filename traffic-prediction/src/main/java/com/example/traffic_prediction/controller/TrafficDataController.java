@@ -18,10 +18,11 @@ public class TrafficDataController {
     
     @PostMapping("/predict")
     // @RequestParam(value = "date") String date, 
-    public String predictTrafficCongestion(@RequestBody TrafficRequest trafficRequest) {
+    public float predictTrafficCongestion(@RequestBody TrafficRequest trafficRequest) {
         // Call service to make the prediction
-        String prediction = service.predictTraffic(trafficRequest);
-        return "Predicted Traffic Congestion Level: " + prediction;
+        float prediction = service.predictTraffic(trafficRequest);
+        System.out.println(prediction);
+        return prediction;
     }
 
     @GetMapping("/predict")
