@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Traffic Congestion Prediction</h2>
+  <form (ngSubmit)="onSubmit()">
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" class="form-control" [(ngModel)]="date" name="date" required />
+
+    <label for="areaName">Area Name:</label>
+    <input type="text" id="areaName" class="form-control" [(ngModel)]="areaName" name="areaName" required />
+
+    <label for="roadName">Road/Intersection Name:</label>
+    <input type="text" id="roadName" class="form-control" [(ngModel)]="roadName" name="roadName" required />
+
+    <button type="submit" class="btn btn-primary">Predict Congestion</button>
+  </form>
+
+  <div *ngIf="prediction">
+    <h3>Prediction Results:</h3>
+    <p>LSTM Prediction: {{ prediction.prediction_lstm }}</p>
+    <p>XGBoost Prediction: {{ prediction.prediction_xgboost }}</p>
+  </div>
+</div>
